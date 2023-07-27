@@ -3,7 +3,7 @@
   let currentOperator = null;
   let previousValue = null;
 
-  // For Decimal
+  // Decimal button
   function handleNumberClick(event) {
     const numberClicked = event.target.textContent;
     if (numberClicked === "." && displayValue.includes(".")) {
@@ -12,15 +12,15 @@
     displayValue = displayValue === "0" ? numberClicked : displayValue + numberClicked;
   }
 
-  // For the operator button
+  // Operator button
   function handleOperatorClick(event) {
   const operatorClicked = event.target.textContent;
   if (operatorClicked === "=") {
     handleEqualClick();
   } else {
-    // Store the current value in previousValue and clear the display
+    
     previousValue = displayValue;
-    displayValue = "0";
+    displayValue = displayValue + operatorClicked;
     currentOperator = operatorClicked;
   }
 }
@@ -28,7 +28,7 @@
 async function handleEqualClick() {
   if (currentOperator && previousValue !== null) {
     
-    const expression = `${previousValue} ${currentOperator} ${displayValue}`;
+    const expression = `${displayValue}`;
 
     try {
       const response = await fetch('/api/calculate.json', {
