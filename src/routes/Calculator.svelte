@@ -31,7 +31,7 @@ async function handleEqualClick() {
     const expression = `${displayValue}`;
 
     try {
-      const response = await fetch('/api/calculate.json', {
+      const response = await fetch('/api/+server.js', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -42,7 +42,6 @@ async function handleEqualClick() {
       if (response.ok) {
         const result = await response.json();
         displayValue = result.result;
-        
         currentOperator = null;
         previousValue = null;
       } else {
