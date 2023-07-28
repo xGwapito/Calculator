@@ -31,7 +31,7 @@ async function handleEqualClick() {
     const expression = `${displayValue}`;
 
     try {
-      const response = await fetch('/api/+server.js', {
+      const response = await fetch('./api/+server.ts', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
